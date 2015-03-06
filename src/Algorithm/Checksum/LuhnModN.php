@@ -32,12 +32,12 @@ class LuhnModN extends Luhn
         });
 
         $nonSingleCharacters = array();
-        foreach($characterMap as $character) {
-            if(strlen($character) > 1) {
+        foreach ($characterMap as $character) {
+            if (strlen($character) > 1) {
                 $nonSingleCharacters[] = $character;
             }
         }
-        if(count($nonSingleCharacters)) {
+        if (count($nonSingleCharacters)) {
             throw new \InvalidArgumentException(
                 "The character map contains references that aren't 1 character in length: '"
                 . implode("' '", $nonSingleCharacters) . "'"
@@ -46,12 +46,12 @@ class LuhnModN extends Luhn
 
         $frequencies = array_count_values($characterMap);
         $duplicates = array();
-        foreach($frequencies as $character => $frequency) {
-            if($frequency > 1) {
+        foreach ($frequencies as $character => $frequency) {
+            if ($frequency > 1) {
                 $duplicates[] = $character;
             }
         }
-        if(count($duplicates)) {
+        if (count($duplicates)) {
             throw new \InvalidArgumentException(
                 "The character map contains duplicates of the following characters: '"
                 . implode("' '", $duplicates) . "'"
@@ -70,12 +70,12 @@ class LuhnModN extends Luhn
     {
 
         $invalidChars = array();
-        foreach(str_split($input) as $char) {
-            if(!in_array($char, $this->characterMap)) {
+        foreach (str_split($input) as $char) {
+            if (!in_array($char, $this->characterMap)) {
                 $invalidChars[] = $char;
             }
         }
-        if(count($invalidChars)) {
+        if (count($invalidChars)) {
             throw new \InvalidArgumentException(
                 "Argument 1 contains the following characters not in the character map: " . implode(" ", $invalidChars)
             );
@@ -85,12 +85,11 @@ class LuhnModN extends Luhn
         $factor = 2;
         $total = 0;
 
-        for($i = strlen($input) -1; $i >= 0; $i--) {
-
+        for ($i = strlen($input) -1; $i >= 0; $i--) {
             $codePoint = array_search(substr($input, $i, 1), $this->characterMap);
             $add = base_convert($codePoint * $factor, 10, $base);
 
-            if($add > 9) {
+            if ($add > 9) {
                 $add = array_sum(str_split($add));
             }
 

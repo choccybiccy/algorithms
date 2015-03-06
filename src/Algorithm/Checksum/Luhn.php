@@ -28,7 +28,7 @@ class Luhn implements ChecksumInterface
      */
     public function isValid($input)
     {
-        if(substr($input, -1) == $this->generateChecksum(substr($input, 0, -1))) {
+        if (substr($input, -1) == $this->generateChecksum(substr($input, 0, -1))) {
             return true;
         }
         return false;
@@ -44,18 +44,18 @@ class Luhn implements ChecksumInterface
     protected function generateChecksum($input)
     {
 
-        if(!is_numeric($input)) {
+        if (!is_numeric($input)) {
             throw new \InvalidArgumentException("Argument 1 must be numeric");
         }
 
         $even = array();
         $odd = array();
 
-        for($i = 0; $i < strlen($input); $i++) {
+        for ($i = 0; $i < strlen($input); $i++) {
             $number = substr($input, $i, 1);
-            if($i % 2) {
+            if ($i % 2) {
                 $number = $number * 2;
-                if($number > 9) {
+                if ($number > 9) {
                     $number = array_sum(str_split($number));
                 }
                 $even[] = $number;
