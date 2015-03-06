@@ -1,4 +1,4 @@
-# Algorithms
+# Algorithms [![Build Status](https://travis-ci.org/choccybiccy/algorithms.svg)](https://travis-ci.org/choccybiccy/algorithms)
 
 ## Introduction
 A PHP library containing many algorithms for use in your projects.
