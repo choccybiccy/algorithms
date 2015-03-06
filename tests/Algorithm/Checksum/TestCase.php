@@ -2,14 +2,16 @@
 
 namespace Choccybiccy\Algorithm\Checksum;
 
-use Choccybiccy\Algorithm\TestCase as BaseTestCase;
+use Choccybiccy\Algorithm\Traits\ReflectionMethods;
 
 /**
  * Abstract TestCase
  * @package Choccybiccy\Algorithm\Checksum
  */
-abstract class TestCase extends BaseTestCase
+abstract class TestCase extends \PHPUnit_Framework_TestCase
 {
+
+    use ReflectionMethods;
 
     /**
      * @var mixed

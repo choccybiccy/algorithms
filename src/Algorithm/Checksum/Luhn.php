@@ -28,7 +28,7 @@ class Luhn implements ChecksumInterface
      */
     public function isValid($input)
     {
-        if((int) substr($input, -1) == $this->generateChecksum(substr($input, 0, -1))) {
+        if(substr($input, -1) == $this->generateChecksum(substr($input, 0, -1))) {
             return true;
         }
         return false;

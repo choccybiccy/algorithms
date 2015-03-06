@@ -10,12 +10,12 @@ interface ChecksumInterface
 {
 
     /**
-     * Validate a checksum
+     * Validate an input
      *
-     * @param mixed $checksum
+     * @param mixed $input
      * @return bool
      */
-    public function isValid($checksum);
+    public function isValid($input);
 
     /**
      * Generate checksum based on an input
